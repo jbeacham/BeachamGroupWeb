@@ -1,0 +1,22 @@
+// Cloudflare Worker that serves the static site in public/ on the custom domains below.
+// Deploy with `wrangler deploy` (logged in as jordanbeacham@gmail.com). Wrangler creates the
+// DNS records and certificates for the custom domains itself; nothing to add in the dashboard.
+{
+  "name": "beachamgroupllc-com",
+  "account_id": "6aa868669c17bfc006e7852dff2d9446",
+  "compatibility_date": "2026-10-01",
+  "main": "src/index.js",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "routes": [
+    { "pattern": "beachamgroupllc.com", "custom_domain": true },
+    { "pattern": "www.beachamgroupllc.com", "custom_domain": true }
+  ]
+}
